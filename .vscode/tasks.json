@@ -33,7 +33,7 @@
                     "\"${file}\"",
                     "--std=c++11",
                     "-o",
-                    "\"${fileDirname}\\${fileBasenameNoExtension}.exe\""
+                    "\"${fileDirname}\\build\\${fileBasenameNoExtension}.exe\""
                 ]
             }
         }

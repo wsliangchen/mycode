@@ -1,4 +1,4 @@
-#include <bits/stdc++.h>
+#include <cstdio>
 typedef long long ll;
 
 #define PI acos(-1.0)
