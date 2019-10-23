@@ -31,9 +31,11 @@
                 "args": [
                     "-ggdb",
                     "\"${file}\"",
+                    "-fexec-charset=GBK",   // 处理mingw中文编码问题
+                    "-finput-charset=GBK",
                     "--std=c++11",
                     "-o",
-                    "\"${fileDirname}\\build\\${fileBasenameNoExtension}.exe\""
+                    "\"${fileDirname}\\${fileBasenameNoExtension}.exe\""
                 ]
             }
         }

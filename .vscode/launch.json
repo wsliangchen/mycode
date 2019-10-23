@@ -17,14 +17,14 @@
             "preLaunchTask": "build",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${fileDirname}/build/${fileBasenameNoExtension}.exe",
+            "program": "${fileDirname}/${fileBasenameNoExtension}.exe",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
             "environment": [],
             "externalConsole": true,
             "MIMode": "gdb",
-            "miDebuggerPath": ".\\.portable\\MinGW\\bin\\gdb.exe",
+            "miDebuggerPath": ".\\.portable\\MinGW\\bin\\gdb32.exe",
             "setupCommands": [
                 {
                     "description": "Enable pretty-printing for gdb",

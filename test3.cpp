@@ -1,42 +1,22 @@
-//算法1
-
+#include <cstdio>
 #include <iostream>
-#include <fstream>
-#include <string>
+using namespace std;
 
-struct TreeNode
-{
-	struct TreeNode *left;
-	struct TreeNode *right;
-	char elem;
-};
+int arr[100010];
 
-TreeNode *BinaryTreeFromOrderings(char *inorder, char *preorder, int length)
-{
-	if (length == 0)
-	{
-		return NULL;
-	}
-	TreeNode *node = new TreeNode;
-	node->elem = *preorder;
-	int rootIndex = 0;
-	for (; rootIndex < length; rootIndex++)
-	{
-		if (inorder[rootIndex] == *preorder)
-			break;
-	}
-	node->left = BinaryTreeFromOrderings(inorder, preorder + 1, rootIndex);
-	node->right = BinaryTreeFromOrderings(inorder + rootIndex + 1, preorder + rootIndex + 1, length - (rootIndex + 1));
-	std::cout << node->elem << std::endl;
-	free(node);
-	return NULL;
+char s[maxl + 10], now[maxl + 10];
+int p[2 * maxl + 10];
+int manacher(char *s) {
+    int len = strlen(s + 1), nas = 0;
+    for (int i = 1; i <= len; i++)
+        now[2*i-1] = '#', now[2*i] = s[i];
+    len = len*2 + 1;
+    now[len] = '#';
+    int pos = 0, r = 0;
+    
 }
 
-int main(int argc, char **argv)
-{
-	char *pr = "GDAFEMHZ";
-	char *in = "ADEFGHMZ";
-	BinaryTreeFromOrderings(in, pr, 8);
-	printf("\n");
-	return 0;
+int main() {
+    test(0);
+    return 0;
 }

@@ -3,15 +3,14 @@
         {
             "name": "Win32",
             "includePath": [
-                ".\\.portable\\MinGW\\bin\\include",
-                ".\\.portable\\MinGW\\bin\\include\\c++\\**"
+                "C:/vsc/VSCode-win32-ia32-1.21.1-portable(C++)/.portable/MinGW/include"
             ],
             "defines": [
                 "_DEBUG",
                 "UNICODE",
                 "_UNICODE"
             ],
-            "compilerPath": ".\\.portable\\MinGW\\bin\\g++.exe",
+            "compilerPath": "C:/vsc/VSCode-win32-ia32-1.21.1-portable(C++)/.portable/MinGW/g++.exe",
             "cStandard": "c11",
             "cppStandard": "c++11",
             "intelliSenseMode": "msvc-x64"

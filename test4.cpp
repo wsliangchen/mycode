@@ -1,25 +1,42 @@
-#include <iostream>
-#include <sstream>
-#include <string>
-#include <vector>
-using namespace std;
+#include <errno.h>
+#include <stdio.h>
+#include <string.h>
+#include <unistd.h>
+int fd[2];
+void parentRead(int times) {
+    char msg[100];
+    memset(msg, '\0', sizeof(msg));
+    ssize_t s = read(fd[0], msg, sizeof(msg));
+    if (s <= 0)
+        printf("read error!\n");
+    printf("parent %d read: %s\n",times, msg);
+}
 
-int main()
-{
-    //用于存放分割后的字符串
-    vector<string> res;
-    //待分割的字符串，含有很多空格
-    string word = "   Hello, I want   to learn C++!   ";
-    //暂存从word中读取的字符串
-    string result;
-    //将字符串读到input中
-    stringstream input(word);
-    //依次输出到result中，并存入res中
-    while (input >> result)
-        res.push_back(result);
-    //输出res
-    for (int i = 0; i < res.size(); i++) {
-        cout << res[i] << endl;
+int main() {
+    int ret = pipe(fd);
+    if (ret == -1) {
+        printf("Open pipe error\n");
+        return 1;
+    }
+    pid_t id_one = fork();
+    if (id_one == 0) {     // child
+        close(fd[0]);      //子进程关闭读指针
+        char *p1 = "Child 1 is sendign a message!";
+        write(fd[1], p1, strlen(p1) + 1);
+    } else {               // parent
+        parentRead(1);
+    }
+    pid_t id_two;          // son process 2 start
+    if (id_one > 0) {
+        id_two = fork();
+        if (id_two == 0) { // child
+            close(fd[0]);  //子进程关闭读指针
+            char *p2 = "Child 2 is sendign a message!";
+            write(fd[1], p2, strlen(p2) + 1);
+        } else {           // parent
+            close(fd[1]);  //父进程关闭写指针
+            parentRead(2);
+        }
     }
 
     return 0;
