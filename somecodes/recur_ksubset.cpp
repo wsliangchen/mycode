@@ -11,13 +11,13 @@ typedef long long ll;
 #define PI acos(-1.0)
 using namespace std;
 
-int m = 4;
+int m = 2;
 vector<int> chosen;
 //生成k-subset
 void cal(int x,int &n){
     //剪枝
-    if(chosen.size() > m|| chosen.size() + (n-x+1) < m) return;
-    if(x == n+1){
+    //if(chosen.size() > m|| chosen.size() + (n-x+1) < m) return;
+    if(x == n){
         for(int i = 0; i < chosen.size(); i++)
             printf("%d ", chosen[i]);
         puts("");
@@ -30,7 +30,7 @@ void cal(int x,int &n){
 }
 
 int main(int argc, char const *argv[]){
-    int n = 4;
+    int n = 3;
     cal(0, n);
     printf("%d", chosen.size());
     return 0;

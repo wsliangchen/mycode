@@ -12,16 +12,14 @@ typedef long long ll;
 using namespace std;
 
 int main(int argc, char const *argv[]){
-    int n,ans = 0;
-    scanf("%d", &n);
-    getchar();
-    for(int i = 0; i < n; i++)
-    {
-        char c;
-        scanf("%c", &c);
-        if(c == 'G') ans++;
+    double n,a,b,r,x,y;
+    int ans = 0;
+    cin >> n >> a >> b>>r;
+    while(n--){
+        cin >> x >> y;
+        double t = (x-a)*(x-a)+(y-b)*(y-b);
+        if(t <= r*r) ans ++;
     }
-    printf("%d", ans);
-    
+    cout << ans;
     return 0;
 }

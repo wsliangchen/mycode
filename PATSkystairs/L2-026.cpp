@@ -1,46 +1,49 @@
+#include <algorithm>
+#include <cmath>
 #include <cstdio>
+#include <cstring>
 #include <iostream>
-#include <set>
+#include <map>
 #include <vector>
+
+typedef long long ll;
+
+#define PI acos(-1.0)
 using namespace std;
+const int N = 100010;
 
-int maxlevel = 1;
-vector<vector<int>> v;
-set<int> s;
+int fa[N], le[N], n, t, m = 1;
 
-void dfs(int node, int level){
-    if (level > maxlevel) {
-        maxlevel = level;
-        s.clear();
-        s.insert(node);
-    }else if (level == maxlevel) {
-        s.insert(node);
+int dfs(int d) {
+    if (d == -1)
+        return 1;
+    if (le[d] != 0)
+        return le[d];
+    else {
+        le[d] = dfs(fa[d]) + 1;
+        if(le[d] > m) m = le[d];
+        return le[d];
     }
-    for(int i = 0; i < v[node].size(); i++)
-        dfs(v[node][i], level + 1);
-
 }
 
-int main(int argc, char const *argv[])
-{
-    int n,tp,root = 0;
+int main(int argc, char const *argv[]) {
     scanf("%d", &n);
-    for(int i = 0; i <= n; i++)
-    {
-        scanf("%d", &tp);
-        if(tp == -1){
-            root = i;
-            continue;
-        }
-        v[tp].push_back(i);
+    for (int i = 1; i <= n; i++) {
+        scanf("%d", &t);
+        fa[i] = t;
+        if (t == -1)
+            le[i] = 1;
     }
-
-    dfs(root, 1);
-    cout << maxlevel << endl;
-    for(auto i = s.begin(); i != s.end(); i++)
-    {
-        printf("%s%d", i == s.begin()?"":" ", *i);
+    for (int i = 1; i <= n; i++) {
+        dfs(i);
     }
-    
+    printf("%d\n", m);
+    t = 0;
+    for (int i = 1; i <= n; i++) {
+        if(le[i] == m){
+            printf("%s%d", t == 0?"":" ",i);
+            t++;
+        } 
+    }
     return 0;
 }

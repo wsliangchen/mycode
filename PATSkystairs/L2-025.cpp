@@ -1,34 +1,40 @@
 #include <cstdio>
-#include <iostream>
 #include <cstring>
+#include <list>
+#include <vector>
 using namespace std;
 
-const int maxn = 10050;
+const int maxn = 10010;
 
-int matrix[maxn][maxn];
-
-int main(int argc, char const *argv[])
-{
-    int n, m,np;
+vector<int> mat[maxn];
+int dt[maxn];
+int main(int argc, char const *argv[]) {
+    int n, m, np, a, b;
     scanf("%d%d", &n, &m);
-    memset(matrix, 0, sizeof(matrix));
-    for(int i = 0; i < m; i++)
-    {
-        int a, b;
+    for (int i = 0; i < m; i++) {
         scanf("%d%d", &a, &b);
-        matrix[a][b] = 1;
-        matrix[b][a] = 1;
+        mat[a].push_back(b);
+        mat[b].push_back(a);
     }
-    for(int i = 0; i < m; i++)
-    {
+    int ck;
+    scanf("%d", &ck);
+    while (ck--) {
+        memset(dt, 0, sizeof dt);
         scanf("%d", &np);
-        int arr[np];
-        for(int j = 0; j < np; j++){
-            int temp;
+        while (np--) {
+            scanf("%d", &a);
+            dt[a] = 1;
         }
-            scanf("%d", &temp);
-        
+        bool flag = true;
+        for(int i = 1; i <= n; i++){
+            for(auto t : mat[i]){
+                if(dt[i] == 0 && dt[t] == 0){
+                    flag = false;
+                    break;
+                }
+            }
+        }
+        printf("%s\n", flag?"YES":"NO");
     }
-    
     return 0;
 }
