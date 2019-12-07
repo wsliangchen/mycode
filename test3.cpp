@@ -1,22 +1,19 @@
 #include <cstdio>
-#include <iostream>
+#include <cstring>
 using namespace std;
-
-int arr[100010];
-
-char s[maxl + 10], now[maxl + 10];
-int p[2 * maxl + 10];
-int manacher(char *s) {
-    int len = strlen(s + 1), nas = 0;
-    for (int i = 1; i <= len; i++)
-        now[2*i-1] = '#', now[2*i] = s[i];
-    len = len*2 + 1;
-    now[len] = '#';
-    int pos = 0, r = 0;
-    
-}
-
+char str[100010];
 int main() {
-    test(0);
+    char yuan[6] = "aeiou";
+    int ans = 0;
+    scanf("%s", str);
+    for (int i = 0; i < strlen(str); i++) {
+        for (int j = 0; j < 5; j++) {
+            if (str[i] == yuan[j]) {
+                ans++;
+                break;
+            }
+        }
+    }
+    printf("%d\n%d", ans, strlen(str)-ans); 
     return 0;
 }
