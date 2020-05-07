@@ -11,7 +11,13 @@ typedef long long ll;
 #define PI acos(-1.0)
 using namespace std;
 
+int gcd(int a, int b){
+    return b == 0?a:gcd(b,a%b);
+}
+
 int main(int argc, char const *argv[]){
-    printf("%.1lf,%.1lf",1.55,2.55);
+    int a,b;
+    scanf("%d%d", &a,&b);
+    printf("%d", a/gcd(a,b)*b);
     return 0;
 }

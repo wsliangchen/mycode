@@ -1,36 +1,32 @@
-#include <cstdio>
-#include <iostream>
-using namespace std;
+#include <stdio.h>
+#include <stdlib.h>
 
-typedef long long ll;
-const int N = 100010;
-int p[N], tmp[N];
+#define MAX 1010
 
-ll merge(int l, int r){
-    if(l >= r) return 0;
-    int mid = l+r >> 1;
-    ll res = merge(l,mid)+merge(mid+1, r);
-    int i = l, j = mid +1, k = 0;
-    while(i <= mid && j <= r){
-        if(p[i] <= p[j]) tmp[k++] = p[i++];
-        else{
-            tmp[k++] = p[j++];
-            res += mid-i+1;
+int main() {
+    int n;
+    while (scanf("%d", &n) != EOF) {
+        int x[MAX], c = 0, num = 1, i, j;
+        x[0] = 1;
+        for (i = 0; i < n; i++) {
+            for (j = 0; j < num; j++) {
+                if (x[j] >= 5) {
+                    x[j] = 2 * (x[j] - 5) + c;
+                    c = 1;
+                } else {
+                    x[j] = 2 * x[j] + c;
+                    c = 0;
+                }
+            }
+            if (c == 1) {
+                num++;
+                c = 0;
+                x[j] = 1;
+            }
         }
+        for (i = num - 1; i >= 0; i--)
+            printf("%d", x[i]);
+        printf("\n");
     }
-    while(i <= mid) tmp[k++] = p[i++];
-    while(j <= r) tmp[k++] = p[j++];
-    for(i = l, j = 0; i<= r; i++,j++) p[i] = tmp[j];
-
-    return res;
-}
-
-int main(int argc, char const *argv[]) {
-    int n, t;
-    cin >> n;
-    for(int i = 0; i < n; i++){
-        cin >> p[i];
-    }
-    cout << merge(0, n-1);
     return 0;
 }

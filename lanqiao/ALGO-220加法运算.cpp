@@ -10,8 +10,13 @@ typedef long long ll;
 
 #define PI acos(-1.0)
 using namespace std;
-
+void GetTwoInts(int *a, int *b){
+    scanf("%d%d", &*a, &*b);
+}
 int main(int argc, char const *argv[]){
-    printf("%.1lf,%.1lf",1.55,2.55);
+    int c,d;
+    int *a = &c,*b = &d;
+    GetTwoInts(a,b);
+    printf("%d", c+d); 
     return 0;
 }

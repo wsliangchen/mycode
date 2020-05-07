@@ -20,8 +20,8 @@ void Backtrack(int t){
     if(t > n){
         sum++;
         //打印当前可行解
-        //for(int i = 1; i <= n; i++) printf("%d", x[i]);
-        //printf("\n");
+        for(int i = 1; i <= n; i++) printf("%d", x[i]);
+        printf("\n"); 
     }else{
         for(int i = 1; i <= n; i++)
         {
@@ -33,12 +33,9 @@ void Backtrack(int t){
 
 int main(int argc, char const *argv[])
 {
-    n = 1;
-    while(n != 13){
-        sum = 0;
-        Backtrack(1);
-        printf("%d princesses solution numsTotal = %d\n", n, sum);
-        n++;
-    }
+    n = 8;
+    Backtrack(1);
+    printf("%d princesses solution numsTotal = %d\n", n, sum);
+
     return 0;
 }

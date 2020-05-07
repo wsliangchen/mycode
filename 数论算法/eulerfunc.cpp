@@ -34,6 +34,6 @@ int main(int argc, char const *argv[]) {
         cin >> a;
         cout << phi(a) << endl;
     }*/
-    cout << phi(19000);
+    cout << phi(190000);
     return 0;
 }

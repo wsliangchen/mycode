@@ -12,6 +12,13 @@ typedef long long ll;
 using namespace std;
 
 int main(int argc, char const *argv[]){
-    printf("%.1lf,%.1lf",1.55,2.55);
+    int l,r;
+    scanf("%d%d", &l, &r);
+    ll ans = 0;
+    for(int i = l; i <= r; i++){
+        for(int j = 0; j < 31; j++)
+            if((i >> j)&1) ans++;
+    }
+    printf("%lld", ans);
     return 0;
 }

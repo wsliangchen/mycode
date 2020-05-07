@@ -12,6 +12,13 @@ typedef long long ll;
 using namespace std;
 
 int main(int argc, char const *argv[]){
-    printf("%.1lf,%.1lf",1.55,2.55);
+    int a,b,c;
+    cin >> a>>b>>c;
+    int x = c/a+1, y = c/b+1, ans = 0;
+    for(int i = 0; i <= x; i++){
+        for(int j = 0; j <= y; j++) 
+            if(a*i+b*j == c) ans++;
+    }
+    cout << ans;
     return 0;
 }

@@ -11,7 +11,16 @@ typedef long long ll;
 #define PI acos(-1.0)
 using namespace std;
 
+void myswap(int &a, int &b){
+    int temp = a;
+    a = b;
+    b = temp;
+}
+
 int main(int argc, char const *argv[]){
-    printf("%.1lf,%.1lf",1.55,2.55);
+    int a,b;
+    cin >> a>> b;
+    myswap(a,b);
+    cout << a <<" "<<b;
     return 0;
 }
