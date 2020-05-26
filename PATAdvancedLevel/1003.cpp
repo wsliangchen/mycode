@@ -7,7 +7,7 @@
 #include <cmath>
 
 using namespace std;
-const int inf = 99999999;
+const int inf = 0x3f3f3f3f;
 int e[510][510];
 
 int n,m,c1,c2,weight[510],dis[510],num[510],w[510];
