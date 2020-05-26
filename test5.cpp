@@ -12,6 +12,9 @@ typedef long long ll;
 using namespace std;
 
 int main(int argc, char const *argv[]){
-    printf("%.1lf,%.1lf",1.55,2.55);
-    return 0;
+	char s[1000];
+	//string s;
+	cin.getline(s,100,'z');
+	cout << s;
+	return 0;
 }
